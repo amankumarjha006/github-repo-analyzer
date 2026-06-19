@@ -13,9 +13,10 @@ if sys.platform == "win32":
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+# Import all models to register them with SQLAlchemy Base
+from app.db import base as _base  # noqa: F401
 from app.api.v1.router import router as v1_router
 from app.core.config import settings
-from app.db import base  # noqa: F401
 
 app = FastAPI(
     title="GitHub Intelligence Platform",
